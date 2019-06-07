@@ -3,6 +3,8 @@ package com.example.encryptdecryptoccuranceappend;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +25,32 @@ public class DecryptionActivity extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         decrypt_btn = findViewById(R.id.dec_button);
+        encryptedText_et = findViewById(R.id.encrypted_text);
+        encryptedText_et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    decrypt_btn.setEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(s.toString().trim().length()==0)
+                    decrypt_btn.setEnabled(false);
+                else
+                    decrypt_btn.setEnabled(true);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(s.toString().trim().length()==0)
+                    decrypt_btn.setEnabled(false);
+                else
+                    decrypt_btn.setEnabled(true);
+            }
+        });
 
         actionBar.setTitle("Decryption");
 
@@ -36,7 +64,7 @@ public class DecryptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                encryptedText_et = findViewById(R.id.encrypted_text);
+
                 resultDecryptedText_tv = findViewById(R.id.decryption_result);
                 enteredEncrypted_tv = findViewById(R.id.to_decrypt);
 
