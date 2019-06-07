@@ -5,6 +5,8 @@ Encrypting and Decrypting String.
 ex: “an apple laaptopp” --> “a1n1 1a1p2l1e1 1l1a2p1t1o1p2” (<alphabet><adjacent alphabet
 count>)
 
+
+
 COPYRIGHT LICENSE (for swipe button):
 MIT License
 
