@@ -7,6 +7,9 @@ count>)
 
 
 
+
+
+
 COPYRIGHT LICENSE (for swipe button):
 MIT License
 
