@@ -1,5 +1,6 @@
 package com.example.encryptdecryptoccuranceappend;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ public class DecryptionActivity extends AppCompatActivity {
     EditText encryptedText_et;
     Button decrypt_btn;
     TextView resultDecryptedText_tv, enteredEncrypted_tv;
+    ActionBar actionBar;
 
 
     @Override
@@ -19,8 +21,11 @@ public class DecryptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decryption);
 
+        actionBar = getSupportActionBar();
         decrypt_btn = findViewById(R.id.dec_button);
-        
+
+        actionBar.setTitle("Decryption");
+
         decrypt();
 
     }
@@ -53,16 +58,14 @@ public class DecryptionActivity extends AppCompatActivity {
         int n = str.length();
         StringBuilder result = new StringBuilder();
 
-        String temp2;
-        Character temptemp1;
         if((str.charAt(0) >= 48 && str.charAt(0) <=57)) {
             return "Error: Cannot Start With Number";
         }
         for (int i = 0; i < n; i++) {
 
             if(!(str.charAt(i) >= 48 && str.charAt(i) <=57)) {
-                temptemp1 = str.charAt(i);
-
+                //temptemp1 = str.charAt(i);
+                //Not needed for current use.
             }
             else {
 

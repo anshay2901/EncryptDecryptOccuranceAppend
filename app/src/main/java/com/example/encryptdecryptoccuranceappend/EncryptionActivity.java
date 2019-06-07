@@ -1,6 +1,7 @@
 package com.example.encryptdecryptoccuranceappend;
 
 import android.content.Context;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +16,7 @@ public class EncryptionActivity extends AppCompatActivity {
     EditText decryptedText_et;
     Button encrypt_btn;
     TextView resultEncryptedText_tv, enteredDecrypted_tv;
-    Toolbar toolbar;
+    ActionBar actionBar;
 
 
     @Override
@@ -29,7 +30,9 @@ public class EncryptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encryption);
 
-
+        actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle("Encryption");
         encrypt_btn = findViewById(R.id.enc_button);
 
         encrypt();
