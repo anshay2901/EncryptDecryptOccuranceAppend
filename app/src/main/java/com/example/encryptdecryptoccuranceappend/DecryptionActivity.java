@@ -16,6 +16,7 @@ public class DecryptionActivity extends AppCompatActivity {
     Button decrypt_btn;
     TextView resultDecryptedText_tv, enteredEncrypted_tv;
     ActionBar actionBar;
+    boolean isCleared = false;
 
 
     @Override
@@ -26,11 +27,18 @@ public class DecryptionActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         decrypt_btn = findViewById(R.id.dec_button);
         encryptedText_et = findViewById(R.id.encrypted_text);
+        resultDecryptedText_tv = findViewById(R.id.decryption_result);
+        enteredEncrypted_tv = findViewById(R.id.to_decrypt);
         encryptedText_et.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    decrypt_btn.setEnabled(false);
+                decrypt_btn.setEnabled(false);
+                if (!isCleared) {
+                    enteredEncrypted_tv.setText("");
+                    resultDecryptedText_tv.setText("");
+                }
+                isCleared = false;
             }
 
             @Override
@@ -64,16 +72,13 @@ public class DecryptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                resultDecryptedText_tv = findViewById(R.id.decryption_result);
-                enteredEncrypted_tv = findViewById(R.id.to_decrypt);
-
                 String encrypted_text_entered;
                 String decrypted_text_result;
                 encrypted_text_entered = encryptedText_et.getText().toString();
                 decrypted_text_result = decFn(encrypted_text_entered);
                 enteredEncrypted_tv.setText(encryptedText_et.getText().toString());
                 resultDecryptedText_tv.setText(decrypted_text_result);
+                isCleared = true;
                 encryptedText_et.setText("");
             }
 
